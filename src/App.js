@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './styles/App.css';
+import KanyeQuote from './components/KanyeQuote';
 
 function App() {
+  const [displayQuote, setDisplayQuote] = useState(false);
+
+  const toggleQuotes = () => {
+    displayQuote===false ? setDisplayQuote(true) : setDisplayQuote(false);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="kanye-header"></header>
+      <main>
+        <div className="quote-container">
+          <h1>Kanye Quotes</h1>
+          {displayQuote===false ? 
+          <h2>Need some inspiration? See what Kanye thinks.</h2>:
+          <KanyeQuote displayQuote={displayQuote} />}
+        </div>
+        <button onClick={toggleQuotes}>{displayQuote===false ? "New Quote" : "Clear Quote"}</button>
+      </main>
     </div>
   );
 }
