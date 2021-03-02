@@ -66,6 +66,7 @@ Great! Now when a the button is clicked, it should be setting the state of `disp
 
 `<KanyeQuote>` should now be displaying instead of the initial `<h2>` when `displayQuote` is set to `true`. We can move on to our `KanyeQuote.js` now!
 
+___
 ### useEffect() and Axios Calls
 Now we'll get into making API calls with `useEffect()` and `axios`
 - We'll need a few imports at the top of `KanyeQuote.js` to start off:
@@ -116,6 +117,7 @@ Don't worry, `I'ma let you finish`, since useEffect does have one nastiest loops
 
 ![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2F3oEduFfxiiHUa7Zfgs%2Fgiphy.gif&f=1&nofb=1)
 
+___
 ### Adding a Dependency Array
 Our `useEffect()` is currently looping through API calls forever since when our `getKanyeQuote` function sets the state of `quote`, the component re-renders and our `useEffect()` fires off again. Not the best behavior for an API call. However, there is a fix - a `Dependency Array`.
 
@@ -149,6 +151,7 @@ And with that, we've done it! You should now have your very own Kanye Quote gene
 
 ![success](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.JJUEyXlNObQUEPiyp6b26gHaFg%26pid%3DApi&f=1)
 
+___
 ## Recap
 In this lab we practiced using the `useEffect()` hook with `useState()` and `axios` to make API calls and render the data in state. A few key things to note:
 - `useEffect()` will fire when a component mounts
