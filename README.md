@@ -82,7 +82,8 @@ Next we'll need a `useState` variable that we can store our quotes in within our
     ```
 
 Since we now have a means of storing our API data, we can create a function below our `useState()` variable that makes our API call. 
-- This function should be asynchronous, setting a response  `res` variable to an `axios.get()` call to our API endpoint: https://kanye.rest/ 
+- This function should be asynchronous, setting a response  `res` variable to an `axios.get()` call to our API endpoint: 
+https://api.kanye.rest
 - Make sure to `console.log` the response data with: `console.log(res.data)` to be sure of what you're getting back from the API response.
 - Once you've gotten a quote back from the API set the state of our `quote` variable the quote from the API response with `setQuote()`:
     ```js
