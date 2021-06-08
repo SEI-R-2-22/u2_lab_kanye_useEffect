@@ -81,21 +81,35 @@ Next we'll need a `useState` variable that we can store our quotes in within our
     const [quote, setQuote] = useState('')
     ```
 
-Since we now have a means of storing our API data, we can create a function below our `useState()` variable that makes our API call. 
-- This function should be asynchronous, setting a response `res` variable to an `axios.get()` call to our API endpoint: 
-https://api.kanye.rest
+Since we now have a means of storing our API data, we can create a function below our `useState()` variable that makes our API call.
+- First, we know we want to make our axios call when our component mounts, so in this case we get to use useEffect in place of a ComponentDidMount!  Let's add in a `useEffect()` hook that will fire off an axios call function when this component is first rendered. Remember that `useEffect()` requires an anonymous callback!
+    ```js
+    useEffect(() => {
+      // here is where we'll invoke our axios call helper function later
+    })
+    ```
+- Now, let's create a helper function above our useEffect to make the call to the API. This function should be asynchronous, setting a response `res` variable to an `axios.get()` call to our API endpoint: "https://api.kanye.rest"
 - Make sure to add a `console.log` of the response data with `console.log(res.data)` so we can see what we're getting back from the API response when we run it later. HINT: We may need to drill deeper in the response data to get to our quote! Our `console.log` will help us know where to look.
 - Later, when we've gotten a quote back from the API, we'll set the state of our `quote` variable to the quote from the API response with `setQuote()`.
-- Here's the structure of the try/catch block we'll want to build this in:
+- Here's the structure of the try/catch block we'll want to build this helper function in:
     ```js
     const getKanyeQuote = async () => {
       try {
-        // AXIOS CALL AND setQuote HERE
+        // AXIOS CALL HERE
+        // setQuote() HERE
       } catch(err) {
         console.log(err);
       }
     }
     ```
+
+Finally, back to our `useEffect()` so we can actually make the API call and see what response we get back! Let's add our `getKanyeQuote` function to our useEffect. 
+
+```js
+useEffect(() => {
+  getKanyeQuote()
+})
+```
 
 Once you've set the state of `quote` with our API response, let's add a tiny bit of conditional rendering into the return of our component to replace the plain text. This way, we'll only see a `quote` in this component if we've gotten one from the API.
 
@@ -103,15 +117,7 @@ Once you've set the state of `quote` with our API response, let's add a tiny bit
 <h2 style={{fontStyle: 'italic'}}>{quote!=='' && quote}</h2>
 ```
 
-Finally, on to `useEffect()` so we can actually make the API call and see what response we get back! Let's add in a `useEffect()` hook below `getKanyeQuote` that fires our `getKanyeQuote` function when this component mounts. Remember that `useEffect()` requires an anonymous callback!
-
-```js
-useEffect(() => {
-  // do something here
-})
-```
-
-Once you've finished with this step, try running your app with `npm start` to test out your `New Quote` button.
+Once you've finished with this step, try running your app with `npm start` to test out your `New Quote` button. There may be an issue...
 
 #### OH NO! We're stuck in an endless loop!
 
