@@ -82,14 +82,15 @@ Next we'll need a `useState` variable that we can store our quotes in within our
     ```
 
 Since we now have a means of storing our API data, we can create a function below our `useState()` variable that makes our API call. 
-- This function should be asynchronous, setting a response  `res` variable to an `axios.get()` call to our API endpoint: 
+- This function should be asynchronous, setting a response `res` variable to an `axios.get()` call to our API endpoint: 
 https://api.kanye.rest
-- Make sure to `console.log` the response data with: `console.log(res.data)` to be sure of what you're getting back from the API response.
-- Once you've gotten a quote back from the API set the state of our `quote` variable the quote from the API response with `setQuote()`:
+- Make sure to add a `console.log` of the response data with `console.log(res.data)` so we can see what we're getting back from the API response when we run it later. HINT: We may need to drill deeper in the response data to get to our quote! Our `console.log` will help us know where to look.
+- Later, when we've gotten a quote back from the API, we'll set the state of our `quote` variable to the quote from the API response with `setQuote()`.
+- Here's the structure of the try/catch block we'll want to build this in:
     ```js
     const getKanyeQuote = async () => {
       try {
-        
+        // AXIOS CALL AND setQuote HERE
       } catch(err) {
         console.log(err);
       }
@@ -102,7 +103,7 @@ Once you've set the state of `quote` with our API response, let's add a tiny bit
 <h2 style={{fontStyle: 'italic'}}>{quote!=='' && quote}</h2>
 ```
 
-Finally, on to `useEffect()`! Let's add in a `useEffect()` hook below `getKanyeQuote` that fires our `getKanyeQuote` function when this component mounts. Remember that `useEffect()` requires an anonymous callback!
+Finally, on to `useEffect()` so we can actually make the API call and see what response we get back! Let's add in a `useEffect()` hook below `getKanyeQuote` that fires our `getKanyeQuote` function when this component mounts. Remember that `useEffect()` requires an anonymous callback!
 
 ```js
 useEffect(() => {
