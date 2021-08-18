@@ -169,4 +169,3 @@ In this lab we practiced using the `useEffect()` hook with `useState()` and `axi
 
 ## Resources
 - [React useEffect() Docs](https://reactjs.org/docs/hooks-effect.html)
-- [Intro to useEffect Lesson]()
