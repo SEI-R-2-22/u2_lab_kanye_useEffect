@@ -1,6 +1,6 @@
 # Kanye useEffect()
 
-![kanye](http://getwallpapers.com/wallpaper/full/8/7/3/451498.jpg)
+![kanye](https://i.imgur.com/nxSDbbb.jpg)
 
 
 ## Overview
