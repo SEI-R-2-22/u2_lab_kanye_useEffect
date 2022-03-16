@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './styles/App.css';
+import { useState } from 'react'
+import './styles/App.css'
 
-function App() {
-  const [displayQuote, setDisplayQuote] = useState(false);
+const App = () => {
+  const [displayQuote, setDisplayQuote] = useState(false)
 
   const toggleQuotes = () => {
    
@@ -19,7 +19,7 @@ function App() {
         <button >New Quote</button>
       </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

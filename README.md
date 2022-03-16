@@ -13,18 +13,17 @@ Have you ever wondered what's on Kanye's mind? Well, now we'll get to find out! 
 
 ## Instructions
 ### Setup
-Let's start by creating a new component called `KanyeQuote.js` in our components folder. We'll be using this component to make API calls and render quotes. We'll keep it as a simple functional component that returns an _italic_ styled `<h2>` for now.
+Let's start by creating a new component called `KanyeQuote.jsx` in our components folder. We'll be using this component to make API calls and render quotes. We'll keep it as a simple functional component that returns an _italic_ styled `<h2>` for now.
 
-```js
-import React from 'react';
-
+```jsx
 const KanyeQuote = (props) => {
+
   return (
-    <h2 style={{fontStyle: 'italic'}}>Quote</h2>;
-  );
+    <h2 style={{fontStyle: 'italic'}}>Quote</h2>
+  )
 }
 
-export default KanyeQuote;
+export default KanyeQuote
 ```
 
 Now, let's take a look at `App.js`. We currently have:
@@ -36,14 +35,14 @@ Now, let's take a look at `App.js`. We currently have:
 - And a function `toggleQuotes`, which we'll use to toggle the state of `displayQuote` 
 
 ### Conditional Rendering
-In `App.js` we'll need to add a few things before we move on to making our API calls in `KanyeQuote.js`.
+In `App.js` we'll need to add a few things before we move on to making our API calls in `KanyeQuote.jsx`.
 
 - First we'll need our `toggleQuote` function to `setDisplayQuote` to `true` if it is `false` and `false` if it is `true`. We'll be using this boolean to conditionally render our `KanyeQuote` component.
 - Next, in the `<button>`'s `onClick` we'll need to fire our `toggleQuote` function.
 - We'll also add a little bit of conditional rendering within the button, since we'll be toggling our quote display:
   
     ```js
-    <button onClick={toggleQuotes}>{displayQuote===false ? "New Quote" : "Clear Quote"}</button>
+    <button onClick={toggleQuotes}>{displayQuote === false ? "New Quote" : "Clear Quote"}</button>
     ```
 
 Great! Now when a the button is clicked, it should be setting the state of `displayQuote` and conditionally rendering either "New Quote" or "Clear Quote"! Now let's add in our `<KanyeQuote>` component:
@@ -51,28 +50,28 @@ Great! Now when a the button is clicked, it should be setting the state of `disp
 - First, we'll need to import it with:
     
     ```js
-    import KanyeQuote from './components/KanyeQuote';
+    import KanyeQuote from './components/KanyeQuote'
     ```
 
 - Now we'll need to render it in the return of `App.js`
 - Since we already have an `<h2>` where we'll want our quote to display, let's add some conditional logic that will display our `<KanyeQuote>` instead if `displayQuote` is set to `true`.
 
     ```js
-    {displayQuote===false ? 
+    {displayQuote === false ? 
     <h2>Need some inspiration? See what Kanye thinks.</h2>
     :
     <KanyeQuote />}
     ```
 
-`<KanyeQuote>` should now be displaying instead of the initial `<h2>` when `displayQuote` is set to `true`. We can move on to our `KanyeQuote.js` now!
+`<KanyeQuote>` should now be displaying instead of the initial `<h2>` when `displayQuote` is set to `true`. We can move on to our `KanyeQuote.jsx` now!
 
 ___
 ### useEffect() and Axios Calls
 Now we'll get into making API calls with `useEffect()` and `axios`
-- We'll need a few imports at the top of `KanyeQuote.js` to start off:
+- We'll need a few imports at the top of `KanyeQuote.jsx` to start off:
     ```js
-    import React, {useState, useEffect} from 'react';
-    import axios from 'axios';
+    import { useState, useEffect } from 'react'
+    import axios from 'axios'
     ```
 
 Next we'll need a `useState` variable that we can store our quotes in within our component. 
@@ -98,7 +97,7 @@ Since we now have a means of storing our API data, we can create a function belo
         // AXIOS CALL HERE
         // setQuote() HERE
       } catch(err) {
-        console.log(err);
+        console.log(err)
       }
     }
     ```
@@ -114,7 +113,7 @@ useEffect(() => {
 Once you've set the state of `quote` with our API response, let's add a tiny bit of conditional rendering into the return of our component to replace the plain text. This way, we'll only see a `quote` in this component if we've gotten one from the API.
 
 ```js
-<h2 style={{fontStyle: 'italic'}}>{quote!=='' && quote}</h2>
+<h2 style={{fontStyle: 'italic'}}>{quote !== '' && quote}</h2>
 ```
 
 Once you've finished with this step, try running your app with `npm start` to test out your `New Quote` button. There may be an issue...
