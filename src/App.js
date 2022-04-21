@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import './styles/App.css'
-import KanyeQuote from './components/KanyeQuote'
 
 const App = () => {
   const [displayQuote, setDisplayQuote] = useState(false)
 
   const toggleQuotes = () => {
-    displayQuote ? setDisplayQuote(false) : setDisplayQuote(true)
+
   }
 
   return (
@@ -14,15 +13,9 @@ const App = () => {
       <header className="kanye-header"></header>
       <main>
         <div className="quote-container">
-          {displayQuote ? (
-            <KanyeQuote displayQuote={displayQuote} />
-          ) : (
-            <h2>Need some inspiration? See what Kanye thinks.</h2>
-          )}
+          <h2>Need some inspiration? See what Kanye thinks.</h2>
         </div>
-        <button onClick={toggleQuotes}>
-          {displayQuote ? 'Clear Quote' : 'New Quote'}
-        </button>
+        <button>New Quote</button>
       </main>
     </div>
   )
