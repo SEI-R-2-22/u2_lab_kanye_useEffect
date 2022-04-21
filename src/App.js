@@ -14,7 +14,6 @@ const App = () => {
       <header className="kanye-header"></header>
       <main>
         <div className="quote-container">
-          <h1>Kanye Quotes</h1>
           {displayQuote ? (
             <KanyeQuote displayQuote={displayQuote} />
           ) : (
